@@ -1,0 +1,39 @@
+CREATE DATABASE flap;
+USE flap;
+
+-- Tabla presos
+CREATE TABLE presos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(100) NOT NULL,
+    dni VARCHAR(9) UNIQUE NOT NULL,
+    delito VARCHAR(255) NOT NULL,
+    condena INT NOT NULL,
+    estado ENUM('Encarcelado','Profugo') DEFAULT 'Profugo',
+    imagen VARCHAR(255) NULL,
+    fecha_ingreso DATE NOT NULL,
+    fecha_salida DATE NULL,
+    observaciones VARCHAR(255) NULL,
+    nivel_peligrosidad ENUM('Bajo','Medio','Alto') NOT NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+-- Inserts
+INSERT INTO presos (
+    nombre, apellido, dni, delito, condena,
+    estado, nivel_peligrosidad,
+    fecha_ingreso, observaciones, created_at
+)
+VALUES
+('Jefry', 'Epsteing', '12345678', 'Tráfico ilegal', 10,
+ 'Profugo', 'Alto',
+ '2024-01-10', 'Caso en investigación', NOW()),
+
+('P', 'Diddy', '87654321', 'Fraude financiero', 8,
+ 'Encarcelado', 'Medio',
+ '2023-06-15', 'Bajo vigilancia', NOW());
+
+
+
+ php artisan storage:link // para los avatars
