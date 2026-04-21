@@ -1,0 +1,11 @@
+node_modules/
+vendor/
+.env
+.env.example
+/public/storage
+/storage/*.key
+npm-debug.log
+yarn-error.log
+.DS_Store
+.next/
+out/
